@@ -1,0 +1,47 @@
+# Gabe Herbst
+# February 23, 2024
+# Bottle counter 
+
+# Lab 5: The Bottle Return Program
+
+# Initialize variables
+totalPayoutRate = 0.1  # Payout rate per bottle ($0.10)
+keepGoing = True
+
+# Loop to run the program
+while keepGoing:
+    totalBottles = 0  # Reset total bottles for each week
+    totalPayout = 0.0  # Reset total payout for each week
+    
+    # Lists to store the number of bottles and sales for each day
+    bottles_per_day = []
+    sales_per_day = []
+    
+    # Input number of bottles for each day
+    for day in range(1, 8):
+        bottles = int(input(f"Enter number of bottles for day #{day}: "))
+        bottles_per_day.append(bottles)  # Add number of bottles to the list
+        
+        # Calculate sales for the day
+        sales = bottles * totalPayoutRate
+        sales_per_day.append(sales)  # Add sales to the list
+        
+        totalBottles += bottles
+    
+    # Calculate total payout for the week
+    totalPayout = totalBottles * totalPayoutRate
+    
+    # Display total number of bottles and total payout for the week
+    print("The total number of bottles collected is", totalBottles)
+    print("The total payout for the week is $", totalPayout)
+    
+    # Display sales for each day
+    for day in range(7):
+        print(f"Day #{day + 1} sales: ${sales_per_day[day]}")
+    
+    # Prompt user to continue
+    userChoice = input("Do you want to enter another week’s worth of data? (Enter y or n): ").lower()
+    
+    # Check user input to determine whether to continue the loop
+    if userChoice != 'y':
+        keepGoing = False
